@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/azu/kuromoji-to-redpen-element/issues"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "kuromoji to Redpen element converter",
   "main": "lib/kuromoji-to-redpen-element.js",
   "directories": {
