@@ -7,7 +7,7 @@ describe("TokenElement-test", function () {
         const surface = 'お';
         const offset = 0;
         const tags = ["接頭詞", "名詞接続", "*", "*", "*", "*", "お", "オ", "オ"];
-        const element = TokenElement.initWithRedPenObject({
+        const element = new TokenElement({
             surface,
             offset,
             tags

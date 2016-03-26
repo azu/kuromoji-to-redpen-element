@@ -14,25 +14,33 @@ function toTagsList(token) {
     ];
 }
 export default class TokenElement {
-    constructor(token) {
-        this.surface = token.surface_form;
-        // kuromoji's token word_position start with 1>=
-        this.offset = token.word_position - 1;
-        this.tags = toTagsList(token);
+    /**
+     * @param {{surface: string, offset: number, tags: Array}} [object]
+     */
+    constructor(object = {}) {
+        this.surface = object.surface;
+        this.offset = object.offset;
+        this.tags = object.tags;
     }
 
     /**
-     * init with redpen object
-     * @param {{ surface: string, offset: number, tags: Array}}object
+     * init with kuromoji.js token object
+     * @param {{surface_form:string, word_position:number}} token
      */
-    static initWithRedPenObject(object) {
-        const element = new TokenElement({});
-        element.surface = object.surface;
-        element.offset = object.offset;
-        element.tags = object.tags;
+    static initWithToken(token) {
+        const element = new TokenElement();
+        element.surface = token.surface_form;
+        // kuromoji's token word_position start with 1>=
+        element.offset = token.word_position - 1;
+        element.tags = toTagsList(token);
         return element;
     }
 
+    /**
+     * is equal to other element
+     * @param {TokenElement} element
+     * @returns {boolean}
+     */
     isEquals(element) {
         return this.surface === element.surface &&
             this.offset === element.offset &&

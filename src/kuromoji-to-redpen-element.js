@@ -6,6 +6,9 @@
 import TokenElement from "./TokenElement";
 export {TokenElement};
 export function isRedPenElement(element) {
+    if (element instanceof TokenElement) {
+        return true;
+    }
     if (element["surface"] == null) {
         return false;
     }
@@ -22,12 +25,12 @@ export function isRedPenElement(element) {
  * @param {Object} token
  */
 export function createElement(token) {
-    return new TokenElement(token);
+    return TokenElement.initWithToken(token);
 }
 
 /**
  * @param {Array} tokens
- * @returns {Array} redpen element
+ * @returns {Array} array of TokenElement
  */
 export function toElements(tokens) {
     return tokens.map(createElement);
